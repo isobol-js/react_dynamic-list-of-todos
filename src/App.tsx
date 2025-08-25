@@ -1,4 +1,5 @@
 /* eslint-disable import/extensions */
+/* eslint-disable no-console */
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
@@ -28,7 +29,6 @@ export const App: React.FC = () => {
 
         setTodos(todosFromServer);
       } catch (error) {
-        console.error('Failed to fetch todos:', error);
       } finally {
         setIsLoading(false);
       }
@@ -45,9 +45,7 @@ export const App: React.FC = () => {
           const userFromServer = await api.getUser(selectedTodo.userId);
 
           setUser(userFromServer);
-        } catch (error) {
-          console.error('Failed to fetch user:', error);
-        }
+        } catch (error) {}
       };
 
       loadUser();
